@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+}
+
+.main{
+  width: 100%;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+}
+
+.heading{
+  grid-row: 1/2;
+  background-color: hsl(180, 29%, 50%);
+  background-image: url(./assets/bg-header-desktop.svg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.job{
+  width: 100%;
+  padding: 10px;
+}
+

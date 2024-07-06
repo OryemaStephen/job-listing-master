@@ -1,9 +1,13 @@
-const App = ()=>{
-  return(
-    <>
-      <h1>Hello World</h1>
-    </>
-  )
+import Heading from "./Components/Heading";
+import JobWrapper from "./Components/JobWrapper";
+
+function App() {
+  return (
+    <div className="main">
+      <Heading />
+      <JobWrapper />
+    </div>
+  );
 }
 
 export default App;
