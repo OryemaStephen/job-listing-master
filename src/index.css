@@ -45,9 +45,80 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 20px;
   background-color: hsl(180, 52%, 96%);
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 3px 10px 8px -3px hsl(160, 30%, 90%);
 }
 
+.job-featured {
+  border-left: 5px solid hsl(180, 29%, 50%);
+}
+
+.job-descrition{
+  display: flex;
+  gap: 10px;
+}
+
+.title{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.name{
+  color: hsl(180, 29%, 50%);
+  font-weight: bold;
+}
+
+.new{
+  text-transform: uppercase;
+  background-color: hsl(180, 29%, 50%);
+  color: hsl(180, 52%, 96%);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.feature{
+  text-transform: uppercase;
+  background-color: hsl(180, 14%, 20%);
+  color: hsl(180, 52%, 96%);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.position{
+  color: hsl(180, 14%, 20%);
+  font-weight: bolder;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.skills{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.role,
+.level,
+.language,
+.tool{
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: hsl(180, 35%, 88%);
+  border-radius: 5px;
+  margin-left: 5px;
+  color: hsl(180, 29%, 50%);
+}
