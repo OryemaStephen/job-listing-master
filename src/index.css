@@ -58,7 +58,9 @@ body{
 
 .job-descrition{
   display: flex;
+  justify-content: space-between;
   gap: 10px;
+
 }
 
 .title{
@@ -103,11 +105,17 @@ body{
   padding-bottom: 5px;
 }
 
+.extra-details > span{
+  padding-right: 5px;
+  color: hsl(180, 8%, 52%);
+}
+
 .skills{
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  gap: 20px;
 }
 .role,
 .level,
@@ -121,4 +129,30 @@ body{
   border-radius: 5px;
   margin-left: 5px;
   color: hsl(180, 29%, 50%);
+  border: none;
+}
+
+.role:hover,
+.level:hover,
+.language:hover,
+.tool:hover{
+  color: hsl(180, 35%, 88%);
+  background-color: hsl(180, 29%, 50%);
+}
+
+.apply-button{
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  margin-left: 5px;
+  background-color: hsl(180, 14%, 20%);
+  color: hsl(180, 52%, 96%);
+  border: none;
+}
+
+.apply-button:hover{
+  color: hsl(180, 14%, 20%);
+  background-color: hsl(180, 29%, 50%);
 }

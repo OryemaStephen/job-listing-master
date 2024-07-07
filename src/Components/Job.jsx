@@ -24,23 +24,28 @@ const Job = ({ jobs }) => {
                 <div className="extra-details">
                   <span>{job.postedAt}</span>
                   <span>{job.contract}</span>
-                  <span>. {job.location}</span>
+                  <span>{job.location}</span>
                 </div>
               </div>
             </div>
             <div className="skills">
-              <span className="role">{job.role}</span>
-              <span className="level">{job.level}</span>
-              <span>
-                {job.languages.map((language, index) => (
-                  <span className="language" key={index}>{language}</span>
-                ))}
-              </span>
-              <span>
-                {job.tools.map((tool, index) => (
-                  <span className="tool" key={index}>{tool}</span>
-                ))}
-              </span>
+              <div>
+                <button className="role">{job.role}</button>
+                <button className="level">{job.level}</button>
+                <span>
+                  {job.languages.map((language, index) => (
+                    <button className="language" key={index}>{language}</button>
+                  ))}
+                </span>
+                <span>
+                  {job.tools.map((tool, index) => (
+                    <button className="tool" key={index}>{tool}</button>
+                  ))}
+                </span>
+              </div>
+              <div>
+                <button className="apply-button">Apply</button>
+              </div>
             </div>
           </div>
         ))}
