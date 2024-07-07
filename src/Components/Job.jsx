@@ -1,10 +1,71 @@
 import { PropTypes } from "prop-types";
 import classNames from 'classnames';
+import { useState } from "react";
 
 const Job = ({ jobs }) => {
+  const [filters, setFilters] = useState([]);
+
+  const handleFilterClick = (filterText) => {
+    if (!filters.includes(filterText)) {
+      setFilters([...filters, filterText]);
+    }
+  };
+
+  const handleClearFilters = () => {
+    setFilters([]);
+  };
+
+  const filteredJobs = filters.length
+    ? jobs.filter((job) =>
+        filters.every(
+          (filter) =>
+            job.role === filter ||
+            job.level === filter ||
+            job.languages.includes(filter) ||
+            job.tools.includes(filter)
+        )
+      )
+    : jobs;
+
   return (
     <>
-        {jobs.map((job) => (
+        <div className="filter">
+          <div>
+            <p>Specialties</p>
+            <select name="role" id="role">
+              <option value="select">Select</option>
+              <option value="frontend">Frontend</option>
+              <option value="backend">Backend</option>
+              <option value="fullstack">Fullstack</option>
+            </select>
+          </div>
+          <div>
+            <p>Experience (level)</p>
+            <select name="level" id="level">
+              <option value="">Select</option>
+              <option value="junior">Junior</option>
+              <option value="mid">Mid</option>
+              <option value="senior">Senior</option>
+            </select>
+          </div>
+          <div>
+            <p>Languages</p>
+            <select name="language" id="language">
+              <option value="select">Select</option>
+              <option value="javascript">JavaScript</option>
+              <option value="python">Python</option>
+              <option value="html">HTML</option>
+              <option value="html">HTML</option>
+            </select>
+          </div>
+          {filters.length > 0 && (
+            <button className="clear-button" onClick={handleClearFilters}>
+              Clear
+            </button>
+          )}
+        </div>
+        
+        {filteredJobs.map((job) => (
           <div className={classNames('job', { 'job-featured': job.featured })} key={job.id}>
             <div className="job-descrition">
               <img className="logo" src={job.logo} alt={job.company}/>
@@ -30,16 +91,16 @@ const Job = ({ jobs }) => {
             </div>
             <div className="skills">
               <div>
-                <button className="role">{job.role}</button>
-                <button className="level">{job.level}</button>
+                <button className="role" onClick={() => handleFilterClick(job.role)}>{job.role}</button>
+                <button className="level" onClick={() => handleFilterClick(job.level)}>{job.level}</button>
                 <span>
                   {job.languages.map((language, index) => (
-                    <button className="language" key={index}>{language}</button>
+                    <button className="language" key={index} onClick={() => handleFilterClick(language)}>{language}</button>
                   ))}
                 </span>
                 <span>
                   {job.tools.map((tool, index) => (
-                    <button className="tool" key={index}>{tool}</button>
+                    <button className="tool" key={index} onClick={() => handleFilterClick(tool)}>{tool}</button>
                   ))}
                 </span>
               </div>

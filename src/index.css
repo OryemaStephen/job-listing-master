@@ -35,6 +35,49 @@ body{
   background-color: hsl(180, 35%, 88%);
 }
 
+.filter{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: hsl(180, 52%, 96%);
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 3px 10px 8px -3px hsl(160, 30%, 90%);
+  gap: 20px;
+}
+
+.filter-item{
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  background-color: hsl(180, 35%, 88%);
+  border-radius: 5px;
+  margin: 5px;
+  color: hsl(180, 29%, 50%);
+  border: none;
+  position: relative;
+}
+
+.remove-item{
+  height: 100%;
+  position: absolute;
+  right: -17px;
+  top:0;
+  width: 20px;
+  border: none;
+  background-color: hsl(180, 29%, 50%);
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  color: hsl(180, 35%, 88%);
+}
+
+.clear-button{
+  border: none;
+  background: none;
+}
+
 .job{
   display: flex;
   justify-content: space-between;
