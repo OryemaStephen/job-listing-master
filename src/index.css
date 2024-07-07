@@ -9,25 +9,19 @@ html{
 }
 
 body{
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Lato', sans-serif;
 }
 
 .main{
   width: 100%;
-  display: grid;
-  grid-template-rows: repeat(7, 1fr);
   height: 100vh;
 }
 
 .heading{
-  grid-row: 1/2;
   height: 60px;
   background-color: hsl(180, 29%, 50%);
   background-image: url(./assets/bg-header-desktop.svg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -44,12 +38,13 @@ body{
 .job{
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 20px;
   background-color: hsl(180, 52%, 96%);
   margin-bottom: 10px;
   border-radius: 5px;
   box-shadow: 3px 10px 8px -3px hsl(160, 30%, 90%);
+  gap: 20px;
 }
 
 .job-featured {
@@ -57,10 +52,11 @@ body{
 }
 
 .job-descrition{
+  width: 50%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items:center;
   gap: 10px;
-
 }
 
 .title{
@@ -111,23 +107,24 @@ body{
 }
 
 .skills{
+  width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   gap: 20px;
 }
 .role,
 .level,
 .language,
 .tool{
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   background-color: hsl(180, 35%, 88%);
   border-radius: 5px;
-  margin-left: 5px;
+  margin: 5px;
   color: hsl(180, 29%, 50%);
   border: none;
 }
@@ -155,4 +152,33 @@ body{
 .apply-button:hover{
   color: hsl(180, 14%, 20%);
   background-color: hsl(180, 29%, 50%);
+}
+
+@media screen and (max-width:480px) {
+  .job{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+
+  .job-descrition{
+    width: 100%;
+    border-bottom: 1px solid hsl(180, 8%, 52%);
+    padding-bottom: 20px;
+    display: block;
+    position: relative;
+  }
+
+  .logo{
+    position: absolute;
+    width: 40px;
+    top: -40px;
+  }
+
+  .skills{
+    width: 100%;
+  }
 }
