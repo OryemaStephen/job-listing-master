@@ -94,7 +94,7 @@ body{
   border-left: 5px solid hsl(180, 29%, 50%);
 }
 
-.job-descrition{
+.job-description{
   width: 50%;
   display: flex;
   justify-content: flex-start;
@@ -198,16 +198,24 @@ body{
 }
 
 @media screen and (max-width:480px) {
+  .jobs{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: hsl(180, 35%, 88%);
+  }
+
   .job{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 30px;
+    margin-top: 30px;
   }
 
-  .job-descrition{
+  .job-description{
     width: 100%;
     border-bottom: 1px solid hsl(180, 8%, 52%);
     padding-bottom: 20px;
@@ -223,5 +231,10 @@ body{
 
   .skills{
     width: 100%;
+  }
+
+  .filter{
+    display: flex;
+    flex-wrap: wrap;
   }
 }

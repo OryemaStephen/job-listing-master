@@ -3,80 +3,82 @@ import classNames from 'classnames';
 import { useState } from "react";
 
 const Job = ({ jobs }) => {
-  const [filters, setFilters] = useState([]);
+  const [roleFilter, setRoleFilter] = useState("");
+  const [levelFilter, setLevelFilter] = useState("");
+  const [languageFilter, setLanguageFilter] = useState("");
 
-  const handleFilterClick = (filterText) => {
-    if (!filters.includes(filterText)) {
-      setFilters([...filters, filterText]);
-    }
+  const handleFilterChange = (event) => {
+    const { name, value } = event.target;
+    if (name === "role") setRoleFilter(value);
+    if (name === "level") setLevelFilter(value);
+    if (name === "language") setLanguageFilter(value);
   };
 
   const handleClearFilters = () => {
-    setFilters([]);
+    setRoleFilter("");
+    setLevelFilter("");
+    setLanguageFilter("");
   };
 
-  const filteredJobs = filters.length
-    ? jobs.filter((job) =>
-        filters.every(
-          (filter) =>
-            job.role === filter ||
-            job.level === filter ||
-            job.languages.includes(filter) ||
-            job.tools.includes(filter)
-        )
-      )
-    : jobs;
+  const filteredJobs = jobs.filter((job) => {
+    const matchesRole = roleFilter === "" || job.role.toLowerCase() === roleFilter.toLowerCase();
+    const matchesLevel = levelFilter === "" || job.level.toLowerCase() === levelFilter.toLowerCase();
+    const matchesLanguage = languageFilter === "" || job.languages.map(lang => lang.toLowerCase()).includes(languageFilter.toLowerCase());
+    return matchesRole && matchesLevel && matchesLanguage;
+  });
 
   return (
     <>
-        <div className="filter">
-          <div>
-            <p>Specialties</p>
-            <select name="role" id="role">
-              <option value="select">Select</option>
-              <option value="frontend">Frontend</option>
-              <option value="backend">Backend</option>
-              <option value="fullstack">Fullstack</option>
-            </select>
-          </div>
-          <div>
-            <p>Experience (level)</p>
-            <select name="level" id="level">
-              <option value="">Select</option>
-              <option value="junior">Junior</option>
-              <option value="mid">Mid</option>
-              <option value="senior">Senior</option>
-            </select>
-          </div>
-          <div>
-            <p>Languages</p>
-            <select name="language" id="language">
-              <option value="select">Select</option>
-              <option value="javascript">JavaScript</option>
-              <option value="python">Python</option>
-              <option value="html">HTML</option>
-              <option value="html">HTML</option>
-            </select>
-          </div>
-          {filters.length > 0 && (
-            <button className="clear-button" onClick={handleClearFilters}>
-              Clear
-            </button>
-          )}
+      <div className="filter">
+        <div>
+          <p>Specialties</p>
+          <select name="role" value={roleFilter} onChange={handleFilterChange}>
+            <option value="">Select</option>
+            <option value="frontend">Frontend</option>
+            <option value="backend">Backend</option>
+            <option value="fullstack">Fullstack</option>
+          </select>
         </div>
-        
-        {filteredJobs.map((job) => (
+        <div>
+          <p>Experience (level)</p>
+          <select name="level" value={levelFilter} onChange={handleFilterChange}>
+            <option value="">Select</option>
+            <option value="junior">Junior</option>
+            <option value="midweight">Midweight</option>
+            <option value="senior">Senior</option>
+          </select>
+        </div>
+        <div>
+          <p>Languages</p>
+          <select name="language" value={languageFilter} onChange={handleFilterChange}>
+            <option value="">Select</option>
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="ruby">RUBY</option>
+          </select>
+        </div>
+        {(roleFilter || levelFilter || languageFilter) && (
+          <button className="clear-button" onClick={handleClearFilters}>
+            Clear
+          </button>
+        )}
+      </div>
+
+      {filteredJobs.length > 0 ? (
+        filteredJobs.map((job) => (
           <div className={classNames('job', { 'job-featured': job.featured })} key={job.id}>
-            <div className="job-descrition">
+            <div className="job-description">
               <img className="logo" src={job.logo} alt={job.company}/>
               <div className="desc">
                 <div className="title">
                   <span className="name">{job.company}</span>
                   <span className={classNames({ new: job.new })}>
-                    {job.new?'New!':''}
+                    {job.new ? 'New!' : ''}
                   </span>
                   <span className={classNames({ feature: job.featured })}>
-                    {job.featured?'Featured':''}
+                    {job.featured ? 'Featured' : ''}
                   </span>
                 </div>
                 <div className="position">
@@ -91,16 +93,16 @@ const Job = ({ jobs }) => {
             </div>
             <div className="skills">
               <div>
-                <button className="role" onClick={() => handleFilterClick(job.role)}>{job.role}</button>
-                <button className="level" onClick={() => handleFilterClick(job.level)}>{job.level}</button>
+                <span className="role">{job.role}</span>
+                <span className="level">{job.level}</span>
                 <span>
                   {job.languages.map((language, index) => (
-                    <button className="language" key={index} onClick={() => handleFilterClick(language)}>{language}</button>
+                    <span className="language" key={index}>{language}</span>
                   ))}
                 </span>
                 <span>
                   {job.tools.map((tool, index) => (
-                    <button className="tool" key={index} onClick={() => handleFilterClick(tool)}>{tool}</button>
+                    <span className="tool" key={index}>{tool}</span>
                   ))}
                 </span>
               </div>
@@ -109,7 +111,10 @@ const Job = ({ jobs }) => {
               </div>
             </div>
           </div>
-        ))}
+        ))
+      ) : (
+        <p>No jobs match the selected filters.</p>
+      )}
     </>
   );
 };
