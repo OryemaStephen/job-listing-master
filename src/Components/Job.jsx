@@ -7,6 +7,7 @@ const Job = ({ jobs }) => {
   const [levelFilter, setLevelFilter] = useState("");
   const [languageFilter, setLanguageFilter] = useState("");
 
+  //Filter jobs based on selected option
   const handleFilterChange = (event) => {
     const { name, value } = event.target;
     if (name === "role") setRoleFilter(value);
@@ -14,12 +15,14 @@ const Job = ({ jobs }) => {
     if (name === "language") setLanguageFilter(value);
   };
 
+  //Clear filters
   const handleClearFilters = () => {
     setRoleFilter("");
     setLevelFilter("");
     setLanguageFilter("");
   };
 
+  //Filter jobs to display
   const filteredJobs = jobs.filter((job) => {
     const matchesRole = roleFilter === "" || job.role.toLowerCase() === roleFilter.toLowerCase();
     const matchesLevel = levelFilter === "" || job.level.toLowerCase() === levelFilter.toLowerCase();
@@ -107,7 +110,7 @@ const Job = ({ jobs }) => {
                 </span>
               </div>
               <div>
-                <button className="apply-button">Apply</button>
+                <button className="apply-button" onClick={()=>alert('Function under development!')}>Apply</button>
               </div>
             </div>
           </div>

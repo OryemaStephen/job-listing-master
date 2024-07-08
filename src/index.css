@@ -157,6 +157,13 @@ body{
   align-items: flex-start;
   gap: 20px;
 }
+
+.skills > div{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .role,
 .level,
 .language,
